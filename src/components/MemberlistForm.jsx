@@ -21,6 +21,7 @@ export default function () {
       .get("https://dairycow-health-prediction.onrender.com/get_members_data")
       .then((res) => {
         let data = res.data.member_data;
+        console.log(data)
         setMembers(data); // Save the data to the state variable
       })
       .catch((err) => {
