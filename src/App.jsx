@@ -6,12 +6,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export default function App() {
 
   return (
-    <>ranjani
+    <>ranjani1
       <Router>
         <Routes>
           {/* <Route path="/" element={<Landingpage />} />
           <Route path="/home/*" element={<Home />} /> */}
-         <p>App Vijay</p> 
         </Routes>
       </Router>
     </>
