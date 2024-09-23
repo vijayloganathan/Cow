@@ -1,21 +1,7 @@
-import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Home from "./components/Home.jsx";
-// import Landingpage from "./components/Landingpage.jsx";
-// import axios from "axios";
+import React from 'react'
 
 export default function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <Router>
-        <Routes>
-          {/* <Route path="/" element={<Landingpage />} />
-          <Route path="/home/*" element={<Home />} /> */}
-          <div>App vijay</div>
-        </Routes>
-      </Router>
-    </>
-  );
+    <div>App</div>
+  )
 }
