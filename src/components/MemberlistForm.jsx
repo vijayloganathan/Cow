@@ -18,7 +18,7 @@ export default function () {
   function getMembersData() {
     console.log("here")
     axios
-      .get("https://dairycow-health-prediction.onrender.com/get_members_data")
+      .get("https://cow-health-prediction-backend.onrender.com/get_members_data")
       .then((res) => {
         let data = res.data.member_data;
         console.log(data)
@@ -32,7 +32,7 @@ export default function () {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("https://dairycow-health-prediction.onrender.com/Add_Member_Details", values)
+      .post("https://cow-health-prediction-backend.onrender.com/Add_Member_Details", values)
       .then((res) => {
         getMembersData();
         alert("Member Details Added or Updated Successfully");

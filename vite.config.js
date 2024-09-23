@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://dairycow-health-prediction.onrender.com',
+        target: 'https://cow-health-prediction-backend.onrender.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }

@@ -28,7 +28,7 @@ export default function PaymentReport() {
     setLoading(true); // Set loading to true when the request starts
     try {
       const response = await axios.post(
-        "https://dairycow-health-prediction.onrender.com/payment_Report_Download",
+        "https://cow-health-prediction-backend.onrender.com/payment_Report_Download",
         values,
         { responseType: "blob" } // Set response type to blob
       );

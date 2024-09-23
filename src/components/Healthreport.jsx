@@ -20,7 +20,7 @@ const Healthreport = () => {
     });
 
     axios
-      .post("https://dairycow-health-prediction.onrender.com/healthreportdata", formData)
+      .post("https://cow-health-prediction-backend.onrender.com/healthreportdata", formData)
       .then((res) => {
         let data = res.data.graphdata;
         let yearlyData = [];
