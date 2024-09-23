@@ -1,5 +1,5 @@
 import React from "react";
-// import Navbar from "./Navbar.jsx";
+import Navbar from "./Navbar.jsx";
 // import Sidenav from "./Sidenav.jsx";
 import cowimg from "../assets/image/cowlogo.png";
 // import Society_Details from "./Society_Details.jsx";
@@ -15,7 +15,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export default function Home() {
   return (
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="container-well">
         <div className="row m-1 ">
           <div className="col-2 bg-primary p-1 " style={{ height: "85vh" }}>
