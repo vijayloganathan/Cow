@@ -2,7 +2,7 @@ import React from "react";
 // import Navbar from "./Navbar.jsx";
 // import Sidenav from "./Sidenav.jsx";
 import cowimg from "../assets/image/cowlogo.png";
-import Society_Details from "./Society_Details.jsx";
+// import Society_Details from "./Society_Details.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import CollectionDateShift from "./CollectionDateShift.jsx";
 // import MemberlistForm from "./MemberlistForm.jsx";
