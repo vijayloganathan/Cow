@@ -4,7 +4,7 @@ import Sidenav from "./Sidenav.jsx";
 import cowimg from "../assets/image/cowlogo.png";
 import Society_Details from "./Society_Details.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import CollectionDateShift from "./CollectionDateShift.jsx";
+import CollectionDateShift from "./CollectionDateShift.jsx";
 import MemberlistForm from "./MemberlistForm.jsx";
 // import Milkcollection from "./Milkcollection.jsx";
 // import Todaycollection from "./Todaycollection.jsx";
@@ -39,7 +39,7 @@ export default function Home() {
               className="d-flex justify-content-center"
             >
               <Routes>
-                {/* <Route path="/" element={<CollectionDateShift />} />*/}
+                <Route path="/" element={<CollectionDateShift />} />
                 <Route path="/memberlist" element={<MemberlistForm />} /> 
                 <Route path="/societydetails" element={<Society_Details />} />
                 {/* <Route path="/milkcollection" element={<Milkcollection />} />
