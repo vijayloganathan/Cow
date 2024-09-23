@@ -8,7 +8,7 @@ import CollectionDateShift from "./CollectionDateShift.jsx";
 import MemberlistForm from "./MemberlistForm.jsx";
 import Milkcollection from "./Milkcollection.jsx";
 import Todaycollection from "./Todaycollection.jsx";
-// import PaymentReport from "./PaymentReport.jsx";
+import PaymentReport from "./PaymentReport.jsx";
 // import Healthreportform from "./Healthreportform.jsx";
 // import Healthreport from "./Healthreport.jsx";
 
@@ -44,8 +44,8 @@ export default function Home() {
                 <Route path="/societydetails" element={<Society_Details />} />
                  <Route path="/milkcollection" element={<Milkcollection />} />
                 <Route path="/todaycollection" element={<Todaycollection />} />
-               {/* <Route path="/paymentreport" element={<PaymentReport />} />
-                <Route path="/Healthreport" element={<Healthreport />} />
+               <Route path="/paymentreport" element={<PaymentReport />} />
+                 {/*<Route path="/Healthreport" element={<Healthreport />} />
                 <Route
                   path="/Healthreportform"
                   element={<Healthreportform />}
