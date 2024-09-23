@@ -6,7 +6,7 @@ import Landingpage from "./components/Landingpage.jsx";
 export default function App() {
 
   return (
-    <>ranjani1
+    <>
       <Router>
         <Routes>
           <Route path="/" element={<Landingpage />} />
