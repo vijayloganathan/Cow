@@ -16,6 +16,7 @@ export default function () {
   };
 
   function getMembersData() {
+    console.log("here")
     axios
       .get("https://dairycow-health-prediction.onrender.com/get_members_data")
       .then((res) => {
