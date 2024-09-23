@@ -15,11 +15,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export default function Home() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="container-well">
         <div className="row m-1 ">
           <div className="col-2 bg-primary p-1 " style={{ height: "85vh" }}>
-            <Sidenav />
+            {/* <Sidenav /> */}
           </div>
           <div
             className="col-9 p-1 "
