@@ -9,7 +9,7 @@ import MemberlistForm from "./MemberlistForm.jsx";
 import Milkcollection from "./Milkcollection.jsx";
 import Todaycollection from "./Todaycollection.jsx";
 import PaymentReport from "./PaymentReport.jsx";
-// import Healthreportform from "./Healthreportform.jsx";
+import Healthreportform from "./Healthreportform.jsx";
 // import Healthreport from "./Healthreport.jsx";
 
 export default function Home() {
@@ -46,10 +46,10 @@ export default function Home() {
                 <Route path="/todaycollection" element={<Todaycollection />} />
                <Route path="/paymentreport" element={<PaymentReport />} />
                  {/* <Route path="/Healthreport" element={<Healthreport />} /> */}
-               {/* <Route
+               <Route
                   path="/Healthreportform"
                   element={<Healthreportform />}
-                /> */}
+                />
               </Routes>
             </div>
           </div>
