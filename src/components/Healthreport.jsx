@@ -1,21 +1,24 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import CanvasJSReact from "@canvasjs/react-charts";
 import { useLocation } from "react-router-dom";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-const CanvasJSChart = CanvasJSReact.CanvasJSChart;
-
 const Healthreport = () => {
   const location = useLocation();
   const { formData } = location.state;
+  const [CanvasJSChart, setCanvasJSChart] = useState(null); // For dynamic import
   const [yearlyChartData, setYearlyChartData] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // State for graph data loading
   const [isDownloading, setIsDownloading] = useState(false); // State for download button loading
   const graphsRef = useRef(null);
 
   useEffect(() => {
+    // Dynamically import CanvasJSReact
+    import("@canvasjs/react-charts").then((module) => {
+      setCanvasJSChart(module.CanvasJSChart);
+    });
+
     axios
       .post("https://dairycow-health-prediction.onrender.com/healthreportdata", formData)
       .then((res) => {
@@ -37,7 +40,7 @@ const Healthreport = () => {
               }
             }
           });
-          if (fatAvgData.length != 0) {
+          if (fatAvgData.length !== 0) {
             yearlyData.push({
               year: mon,
               fatAvgData: fatAvgData,
@@ -111,33 +114,35 @@ const Healthreport = () => {
                 {yearlyChartData.map((yearData, index) => (
                   <div key={yearData.year}>
                     <h3>Cow Health Status of {yearData.year}</h3>
-                    <CanvasJSChart
-                      options={{
-                        animationEnabled: true,
-                        axisX: {
-                          title: "Month",
-                          valueFormatString: "MMM",
-                        },
-                        axisY: {
-                          title: "Deviation",
-                        },
-                        backgroundColor: "transparent",
-                        data: [
-                          {
-                            type: "spline",
-                            name: "Fat Deviation",
-                            showInLegend: true,
-                            dataPoints: yearData.fatAvgData,
+                    {CanvasJSChart && (
+                      <CanvasJSChart
+                        options={{
+                          animationEnabled: true,
+                          axisX: {
+                            title: "Month",
+                            valueFormatString: "MMM",
                           },
-                          {
-                            type: "spline",
-                            name: "SNF Deviation",
-                            showInLegend: true,
-                            dataPoints: yearData.snfAvgData,
+                          axisY: {
+                            title: "Deviation",
                           },
-                        ],
-                      }}
-                    />
+                          backgroundColor: "transparent",
+                          data: [
+                            {
+                              type: "spline",
+                              name: "Fat Deviation",
+                              showInLegend: true,
+                              dataPoints: yearData.fatAvgData,
+                            },
+                            {
+                              type: "spline",
+                              name: "SNF Deviation",
+                              showInLegend: true,
+                              dataPoints: yearData.snfAvgData,
+                            },
+                          ],
+                        }}
+                      />
+                    )}
                   </div>
                 ))}
               </div>
