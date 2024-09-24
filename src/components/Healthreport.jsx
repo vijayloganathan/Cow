@@ -15,9 +15,16 @@ const Healthreport = () => {
 
   useEffect(() => {
     // Dynamically import CanvasJSReact
-    import("@canvasjs/react-charts").then((module) => {
-      setCanvasJSChart(module.CanvasJSChart);
-    });
+    let isMounted = true;
+    import("@canvasjs/react-charts")
+      .then((module) => {
+        if (isMounted) {
+          setCanvasJSChart(() => module.CanvasJSChart);
+        }
+      })
+      .catch((error) => {
+        console.error("Error importing CanvasJSChart: ", error);
+      });
 
     axios
       .post("https://cow-health-prediction-backend.onrender.com/healthreportdata", formData)
@@ -56,6 +63,10 @@ const Healthreport = () => {
         console.log(err);
         setIsLoading(false); // Set loading state to false in case of error
       });
+
+    return () => {
+      isMounted = false;
+    };
   }, [formData]);
 
   const downloadReport = () => {
@@ -93,7 +104,7 @@ const Healthreport = () => {
   return (
     <div className="col-12 align-self-center">
       <p className="h4 text-primary font-italic text-center">
-        Diary Cow Health Chart
+        Dairy Cow Health Chart
       </p>
 
       {isLoading ? ( // Render loader while data is being fetched
@@ -114,7 +125,7 @@ const Healthreport = () => {
                 {yearlyChartData.map((yearData, index) => (
                   <div key={yearData.year}>
                     <h3>Cow Health Status of {yearData.year}</h3>
-                    {CanvasJSChart && (
+                    {CanvasJSChart ? (
                       <CanvasJSChart
                         options={{
                           animationEnabled: true,
@@ -142,6 +153,8 @@ const Healthreport = () => {
                           ],
                         }}
                       />
+                    ) : (
+                      <div>Loading chart...</div>
                     )}
                   </div>
                 ))}
