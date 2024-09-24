@@ -3,6 +3,7 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+// import canvasjs from "../../node_modules/@canvasjs"
 
 const Healthreport = () => {
   const location = useLocation();
@@ -16,7 +17,7 @@ const Healthreport = () => {
   useEffect(() => {
     // Dynamically import CanvasJSReact
     let isMounted = true;
-    import("@canvasjs/react-charts")
+    import("../../node_modules/@canvasjs")
       .then((module) => {
         if (isMounted) {
           setCanvasJSChart(() => module.CanvasJSChart);
