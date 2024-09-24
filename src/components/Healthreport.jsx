@@ -3,7 +3,6 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-// import canvasjs from "../../node_modules/@canvasjs"
 
 const Healthreport = () => {
   const location = useLocation();
@@ -16,16 +15,9 @@ const Healthreport = () => {
 
   useEffect(() => {
     // Dynamically import CanvasJSReact
-    let isMounted = true;
-    import("../../node_modules/@canvasjs")
-      .then((module) => {
-        if (isMounted) {
-          setCanvasJSChart(() => module.CanvasJSChart);
-        }
-      })
-      .catch((error) => {
-        console.error("Error importing CanvasJSChart: ", error);
-      });
+    import("@canvasjs/react-charts").then((module) => {
+      setCanvasJSChart(module.CanvasJSChart);
+    });
 
     axios
       .post("https://cow-health-prediction-backend.onrender.com/healthreportdata", formData)
@@ -64,10 +56,6 @@ const Healthreport = () => {
         console.log(err);
         setIsLoading(false); // Set loading state to false in case of error
       });
-
-    return () => {
-      isMounted = false;
-    };
   }, [formData]);
 
   const downloadReport = () => {
@@ -105,7 +93,7 @@ const Healthreport = () => {
   return (
     <div className="col-12 align-self-center">
       <p className="h4 text-primary font-italic text-center">
-        Dairy Cow Health Chart
+        Diary Cow Health Chart
       </p>
 
       {isLoading ? ( // Render loader while data is being fetched
@@ -126,7 +114,7 @@ const Healthreport = () => {
                 {yearlyChartData.map((yearData, index) => (
                   <div key={yearData.year}>
                     <h3>Cow Health Status of {yearData.year}</h3>
-                    {CanvasJSChart ? (
+                    {CanvasJSChart && (
                       <CanvasJSChart
                         options={{
                           animationEnabled: true,
@@ -154,8 +142,6 @@ const Healthreport = () => {
                           ],
                         }}
                       />
-                    ) : (
-                      <div>Loading chart...</div>
                     )}
                   </div>
                 ))}
